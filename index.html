@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Crystal</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+  <div class="jumbotron">
+    <h1 class="text-center">Match the Value!</h1>
+    <h3 class="goaltext">Goal</h3>
+    <h3 id="goal">Goal</h3>
+  </div>
+
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Calculator Card -->
+      <div class="col-lg-4">
+        <div class="card">
+          <h3 class="card-header">Calculator</h3>
+
+          <div class="card-body">
+            <button id="button-1" class="btn btn-primary number" value="1"><span>1</span></button>
+            <button id="button-2" class="btn btn-primary number" value="2"><span>2</span></button>
+            <button id="button-3" class="btn btn-primary number" value="3"><span>3</span></button>
+            <button id="button-4" class="btn btn-primary number" value="4"><span>4</span></button>
+          </div>
+        </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+      <script>
+
+        // <!-- There will be four crystals displayed as buttons on the page.
+
+        var win = 0
+        var loss = 0
+
+        var ace = 0;
+        var jack = 0;
+        var queen = 0;
+        var king = 0;
+
+        function Start() {
+          var firstNumber = "";
+          var operator = "";
+          var secondNumber = "";
+          var result = "";
+          var total = 0;
+
+          var aceGen = Math.floor((Math.random() * 12) + 1);
+          var jackGen = Math.floor((Math.random() * 12) + 1);
+          var queenGen = Math.floor((Math.random() * 12) + 1);
+          var kingGen = Math.floor((Math.random() * 12) + 1);
+
+          //    * The player will be shown a random number from 19 - 120 at the start of the game to match.
+
+          // var randomgoal = 
+          // var computerGuess = Math.floor((Math.random() * 10) + 1);
+
+          function generateNum() {
+            var goal = Math.floor((Math.random() * 120) + 19);
+            document.getElementById("goal").innerHTML = goal;
+            console.log(goal);
+          };
+
+          $("#button-1").on("click",
+            function () {
+              console.log("click");
+              ace += aceGen;
+              console.log(ace);
+            });
+        
+
+
+        $("#button-2").on("click",
+          function () {
+            console.log("click");
+            jack += jackGen;
+            console.log(jack);
+          });
+
+        $("#button-3").on("click",
+          function () {
+            console.log("click")
+            queen += queenGen;
+            console.log(queen);
+          });
+
+        $("#button-4").on("click",
+          function () {
+            console.log("click")
+            king += kingGen;
+            console.log(king);
+          });
+
+        };
+
+
+
+        //    - Generate a value for each card. Each card can have a value between 1-12.
+
+        // $(document).gamestart(function() {
+        //   $(".number").click(function() { 
+        //   var number = $(this).val(); {
+        //   $("#first-number").append("" + number)
+        //   var numOne = $("#first-number");
+
+        //    * When the player clicks on a card, it will add a specific amount of points to the player's total score. 
+
+        //      * Your game will hide this amount until the player clicks a crystal.
+        //      * When they do click one, update the player's score counter.
+
+        //    * The player wins if their total score matches the random number from the beginning of the game.
+
+        //    * The player loses if their score goes above the random number.
+
+        //    * The game restarts whenever the player wins or loses.  
+
+        //      * When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
+
+        //    * The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.
+
+        // ##### Option 1 Game design notes
+
+        // * The random number shown at the start of the game should be between 19 - 120.
+
+        // * Each crystal should have a random hidden value between 1 - 12. -->
+
+
+        Start()
+
+      </script>
+</body>
+
+</html>
