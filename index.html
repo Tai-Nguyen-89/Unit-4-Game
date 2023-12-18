@@ -8,15 +8,17 @@
   <title>Match the Goal</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
   <div class="jumbotron">
     <h1 class="text-center">Match the Value!</h1>
-    <h3>Goal: <p id="goal"></p></h3>
-    <h3>Total: <p id="total"></p></h3>
+    <h3>Goal: <p id="goal"></p>
+    </h3>
+    <h3>Total: <p id="total"></p>
+    </h3>
     <h3>Wins: <p id="win"></p>
     </h3>
     <h3>Loses: <p id="loses"></p>
@@ -44,184 +46,158 @@
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
       <script>
-
-        // <!-- There will be four crystals displayed as buttons on the page.
-
-        var win = 0;
+          var win = 0;
         var loses = 0;
-
         var ace = 0;
         var jack = 0;
         var queen = 0;
-        var king = 0;
+        var king = 0          ;
+          var total = 0
+          
 
-        function Restart() {
+        // <!-- There will be four crystals displayed as buttons on the page.
+function reset () {
+         ace = 0;
+         jack = 0;
+         queen = 0;
+         king = 0;
+           total = 0;
 
-        function Start() {
-          var newgoal;
-          var total = 0;
-
-          // Random Number Gen for Ace, Jack, Queen, and King
-          var aceGen = Math.floor((Math.random() * 12) + 1); {
-            console.log("click");
+           var aceGen = Math.floor((Math.random() * 12) + 1); 
             ace += aceGen;
             console.log(ace);
-          };
 
-          var jackGen = Math.floor((Math.random() * 12) + 1); {
-            console.log("click");
+          var jackGen = Math.floor((Math.random() * 12) + 1); 
             jack += jackGen;
             console.log(jack);
-          };
 
-          var queenGen = Math.floor((Math.random() * 12) + 1); {
-            console.log("click");
+          var queenGen = Math.floor((Math.random() * 12) + 1); 
             queen += queenGen;
             console.log(queen);
-          };
 
-          var kingGen = Math.floor((Math.random() * 12) + 1); {
-            console.log("click");
+          var kingGen = Math.floor((Math.random() * 12) + 1); 
             king += kingGen;
             console.log(king);
-          };
 
-          var goal = Math.floor((Math.random() * 101) + 19); {
-            document.getElementById("goal").innerHTML = goal;
-            newgoal += goal;
-            console.log(newgoal + " goal");
-          };
+           goal = Math.floor((Math.random() * 101) + 19); 
+           $("#goal").text(goal)
 
-          //    * The player will be shown a random number from 19 - 120 at the start of the game to match.
+}
+      
+        
+        //    * The player will be shown a random number from 19 - 120 at the start of the game to match.
 
-          //  Button triggers, grabs values from random gen and adds to total.
-          $("#button-1").on("click",
-            function () {
-              total += ace;
-              console.log(total);
-              document.getElementById("total").innerHTML = total;
-              if (total < goal) {
-                console.log("still less");
-                return total;
-              } else if (total === goal) {
-                win++;
-                console.log(win + "win");
-                document.getElementById("win").innerHTML = win;
-                total = 0;
+        //  Button triggers, grabs values from random gen and adds to total.
+        $("#button-1").on("click",
+          function () {
+            total += ace;
+            console.log(total);
+            console.log(goal)
+            document.getElementById("total").innerHTML = total;
+            if (total > goal) {
+              loses++;
+              console.log(loses + "loses");
+              document.getElementById("loses").innerHTML = loses;
 
-                Restart();
-              } else {
-                loses++;
-                console.log(loses + "loses");
-                document.getElementById("loses").innerHTML = loses;
-                total = 0;
+              reset()
+            }
+            else if (total === goal) {
+              win++;
+              console.log(win + "win");
+              document.getElementById("win").innerHTML = win;
 
-                Restart();
-              };
-            });
+              reset()
+            }
+          });
 
-          $("#button-2").on("click",
-            function () {
-              total += jack;
-              console.log(total);
-              document.getElementById("total").innerHTML = total;
-              if (total < goal) {
-                console.log("still less");
-                return total;
-              } else if (total === goal) {
-                win++;
-                console.log(win + "win");
-                document.getElementById("win").innerHTML = win;
-                total = 0;
+        $("#button-2").on("click",
+          function () {
+            total += jack;
+            console.log(total);
+            document.getElementById("total").innerHTML = total;
+            if (total > goal) {
+              loses++;
+              console.log(loses + "loses");
+              document.getElementById("loses").innerHTML = loses;
 
-                Restart();
-              } else {
-                loses++;
-                console.log(loses + "loses");
-                document.getElementById("loses").innerHTML = loses;
-                total = 0; 
+              reset()
+            }
+            else if (total === goal) {
+              win++;
+              console.log(win + "win");
+              document.getElementById("win").innerHTML = win;
 
-                Restart();
-              };
-            });
+              reset()
+            }
+          });
 
-          $("#button-3").on("click",
-            function () {
-              total += queen;
-              console.log(total);
-              document.getElementById("total").innerHTML = total;
-              if (total < goal) {
-                console.log("still less");
-                return total;
-              } else if (total === goal) {
-                win++;
-                console.log(win + "win");
-                document.getElementById("win").innerHTML = win;
-                total = 0; 
+        $("#button-3").on("click",
+          function () {
+            total += queen;
+            console.log(total);
+            document.getElementById("total").innerHTML = total;
+            if (total > goal) {
+              loses++;
+              console.log(loses + "loses");
+              document.getElementById("loses").innerHTML = loses;
 
-                Restart();
-              } else {
-                loses++;
-                console.log(loses + "loses");
-                document.getElementById("loses").innerHTML = loses;
-                total = 0;
+              reset()
+            }
+            else if (total === goal) {
+              win++;
+              console.log(win + "win");
+              document.getElementById("win").innerHTML = win;
 
-                Restart();
-              };
-            });
+              reset()
+            }
+          });
 
-          $("#button-4").on("click",
-            function () {
-              total += king;
-              console.log(total);
-              document.getElementById("total").innerHTML = total;
-              if (total < goal) {
-                console.log("still less");
-                return total;
-              } else if (total === goal) {
-                win++;
-                console.log(win + "win");
-                document.getElementById("win").innerHTML = win;
-                total = 0;
+        $("#button-4").on("click",
+          function () {
+            total += king;
+            console.log(total);
+            document.getElementById("total").innerHTML = total;
+            if (total > goal) {
+              loses++;
+              console.log(loses + "loses");
+              document.getElementById("loses").innerHTML = loses;
 
-                Restart();
-              } else {
-                loses++;
-                console.log(loses + "loses");
-                document.getElementById("loses").innerHTML = loses;
-                total = 0;
+              reset()
+            }
+            else if (total === goal) {
+              win++;
+              console.log(win + "win");
+              document.getElementById("win").innerHTML = win;
 
-                Restart();
-              };
-            });
+              reset()
+            }
+          });
 
-          //    - Generate a value for each card. Each card can have a value between 1-12.
+        //    - Generate a value for each card. Each card can have a value between 1-12.
 
-          //    * When the player clicks on a card, it will add a specific amount of points to the player's total score. 
+        //    * When the player clicks on a card, it will add a specific amount of points to the player's total score. 
 
-          //      * Your game will hide this amount until the player clicks a crystal.
-          //      * When they do click one, update the player's score counter.
+        //      * Your game will hide this amount until the player clicks a crystal.
+        //      * When they do click one, update the player's score counter.
 
-          //    * The player wins if their total score matches the random number from the beginning of the game.
+        //    * The player wins if their total score matches the random number from the beginning of the game.
 
-          //    * The player loses if their score goes above the random number.
+        //    * The player loses if their score goes above the random number.
 
-          //    * The game restarts whenever the player wins or loses.  
+        //    * The game restarts whenever the player wins or loses.  
 
-          //      * When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
+        //      * When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
 
-          //    * The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.
+        //    * The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.
 
-          // ##### Option 1 Game design notes
+        // ##### Option 1 Game design notes
 
-          // * The random number shown at the start of the game should be between 19 - 120.
+        // * The random number shown at the start of the game should be between 19 - 120.
 
-          // * Each crystal should have a random hidden value between 1 - 12. -->
+        // * Each crystal should have a random hidden value between 1 - 12. -->
 
-        };
-        Start()
-      };
-      Restart();
+      
+        reset();
 
       </script>
 </body>
